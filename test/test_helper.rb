@@ -10,4 +10,6 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  require 'controllers/controller_test'
+  require 'controllers/user_api_controller_test'
 end
