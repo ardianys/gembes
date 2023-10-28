@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.3"
 
 gem 'ardianys_scaffold', :path => '/Users/ardianys/rails/ardianys_scaffold_rails7'
+gem 'lsp', :path => 'lib/lsp'
 gem 'will_paginate'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -58,6 +59,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails',  "~> 4.0.1"
+  gem 'dotenv-rails'
 end
 
 group :development do
