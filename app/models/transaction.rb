@@ -3,8 +3,7 @@ class Transaction < ApplicationRecord
   belongs_to :from_wallet, class_name: 'Wallet', optional: true
   belongs_to :to_wallet, class_name: 'Wallet'
 
-  # but how to handle money chicken egg problem ?
-  # validates :from_wallet
+  validates :from_wallet, presence: true
   validates :to_wallet, presence: true
   validates :from_who_id, presence: true, if: -> { from_wallet.present? }
   validates :to_who_id, presence: true

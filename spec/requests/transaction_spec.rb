@@ -38,15 +38,13 @@ RSpec.describe Transaction, type: :request do
 
       # Source wallet top up
       params = {
-        # from_wallet_id: @user1_wallet.id,
         to_wallet_id: @user1_wallet.id,
-        # from_who_id: @user1.id,
         to_who_id: @user1.id,
-        # from_who_class: 'User',
         to_who_class: 'User',
         amount: 1000,
       }
-      Transaction.create! params
+      transaction = Transaction.new params
+      transaction.save validate: false
 
       params = {
         from_wallet_id: @user1_wallet.id,
