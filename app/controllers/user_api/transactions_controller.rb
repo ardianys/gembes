@@ -12,6 +12,12 @@ class UserApi::TransactionsController < UserApi::BaseController
   def create
     @transaction = Transaction.new(transaction_params)
 
+    msg = 'Source wallet not valid'
+    return render json: msg, status: :unprocessable_entity unless @transaction.from_wallet
+
+    msg = 'Target wallet not valid'
+    return render json: msg, status: :unprocessable_entity unless @transaction.to_wallet
+
     if @transaction.save
       render :show, status: :created, location: [:user_api, @transaction]
     else
@@ -46,7 +52,6 @@ class UserApi::TransactionsController < UserApi::BaseController
         :from_who_class,
         :to_who_class,
         :amount,
-
       )
     end
 end

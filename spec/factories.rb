@@ -8,11 +8,21 @@ FactoryBot.define do
   factory :team do
     name { Faker::Lorem.name }
   end
+  factory :stock do
+    name { Faker::Lorem.name }
+  end
   factory :wallet do
-    who_id nil
-    who_class nil
+    transient do
+      who_id { nil }
+      who_class { nil }
+    end
+
     code { Faker::Number.number(digits: 6) }
     name { Faker::Lorem.name }
+
+    after(:create) do |wallet, evaluator|
+      wallet.update who_id: evaluator.who_id, who_class: evaluator.who_class
+    end
   end
 end
 
