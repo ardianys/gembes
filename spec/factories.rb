@@ -61,8 +61,8 @@ FactoryBot.define do
     trait :with_full do
       user1 = FactoryBot.create(:user)
       user2 = FactoryBot.create(:user)
-      wallet1 = FactoryBot.create(:wallet, :with_who, param_id: user1.id, param_class: 'User')
-      wallet2 = FactoryBot.create(:wallet, :with_who, param_id: user2.id, param_class: 'User')
+      wallet1 = FactoryBot.create(:wallet, :with_user)
+      wallet2 = FactoryBot.create(:wallet, :with_user)
 
       params = {
         to_wallet_id: wallet1.id,
