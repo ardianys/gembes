@@ -38,9 +38,8 @@ class UserApi::TeamsController < UserApi::BaseController
     end
 
     def team_params
-      params.require(:team).permit(
+      params.permit(
         :name,
-        
       )
     end
 end

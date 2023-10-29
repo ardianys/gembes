@@ -25,7 +25,7 @@ RSpec.describe Wallet, type: :request do
         code: code,
         name: Faker::Name.name,
       }
-      spost @user, user_api_wallets_path, params
+      spost @user, url_for([:user_api, :wallets]), params
       expect(response.body).to include(code)
       expect(@user.wallets.size).to be >= 1
 
@@ -43,7 +43,7 @@ RSpec.describe Wallet, type: :request do
         code: code,
         name: Faker::Name.name,
       }
-      spost @user, user_api_wallets_path, params
+      spost @user, url_for([:user_api, :wallets]), params
 
       # New team's wallet should not belong to the user
       sget @user, url_for([:user_api, @user])
@@ -58,7 +58,7 @@ RSpec.describe Wallet, type: :request do
         code: code,
         name: Faker::Name.name,
       }
-      spost @user, user_api_wallets_path, params
+      spost @user, url_for([:user_api, :wallets]), params
       expect(response.body).to include(code)
       expect(@team.wallets.size).to be >= 1
     end
@@ -71,7 +71,7 @@ RSpec.describe Wallet, type: :request do
         code: code,
         name: Faker::Name.name,
       }
-      spost @user, user_api_wallets_path, params
+      spost @user, url_for([:user_api, :wallets]), params
       expect(response.body).to include(code)
       expect(@stock.wallets.size).to be >= 1
     end
