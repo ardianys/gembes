@@ -23,7 +23,7 @@ RSpec.describe Wallet, type: :request do
         who_id: @user.id,
         who_class: 'User',
         code: code,
-        name: Faker::Lorem.name,
+        name: Faker::Name.name,
       }
       spost @user, user_api_wallets_path, params
       expect(response.body).to include(code)
@@ -32,6 +32,8 @@ RSpec.describe Wallet, type: :request do
       # check wallet entity
       sget @user, url_for([:user_api, @user.wallets.first])
       expect(response.body).to include(code)
+      expect(json['owner']).not_to be nil
+      expect(json['owner']['email']).to be == @user.email
 
       # create new wallets for no User type
       code = Faker::Number.number(digits: 6).to_s
@@ -39,7 +41,7 @@ RSpec.describe Wallet, type: :request do
         who_id: @team.id,
         who_class: 'Team',
         code: code,
-        name: Faker::Lorem.name,
+        name: Faker::Name.name,
       }
       spost @user, user_api_wallets_path, params
 
@@ -54,7 +56,7 @@ RSpec.describe Wallet, type: :request do
         who_id: @team.id,
         who_class: 'Team',
         code: code,
-        name: Faker::Lorem.name,
+        name: Faker::Name.name,
       }
       spost @user, user_api_wallets_path, params
       expect(response.body).to include(code)
@@ -67,7 +69,7 @@ RSpec.describe Wallet, type: :request do
         who_id: @stock.id,
         who_class: 'Stock',
         code: code,
-        name: Faker::Lorem.name,
+        name: Faker::Name.name,
       }
       spost @user, user_api_wallets_path, params
       expect(response.body).to include(code)

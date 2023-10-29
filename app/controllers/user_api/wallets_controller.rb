@@ -11,8 +11,10 @@ class UserApi::WalletsController < UserApi::BaseController
 
   def create
     @wallet = Wallet.new(wallet_params)
+    owner = @wallet.who_class.constantize.find @wallet.who_id
+    @wallet.owner = owner
 
-    if @wallet.save!
+    if @wallet.save
       render :show, status: :created, location: [:user_api, @wallet]
     else
       render json: @wallet.errors, status: :unprocessable_entity
