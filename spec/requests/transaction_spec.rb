@@ -8,18 +8,18 @@ RSpec.describe Transaction, type: :request do
     before do
       @user1 = FactoryBot.create(:user)
       @user2 = FactoryBot.create(:user)
-      @user1_wallet = FactoryBot.create(:wallet, who_id: @user1.id, who_class: 'User')
-      @user2_wallet = FactoryBot.create(:wallet, who_id: @user2.id, who_class: 'User')
+      @user1_wallet = FactoryBot.create(:wallet, :with_who, param_id: @user1.id, param_class: 'User')
+      @user2_wallet = FactoryBot.create(:wallet, :with_who, param_id: @user2.id, param_class: 'User')
 
       @team1 = FactoryBot.create(:team)
       @team2 = FactoryBot.create(:team)
-      @team1_wallet = FactoryBot.create(:wallet, who_id: @team1.id, who_class: 'Team')
-      @team2_wallet = FactoryBot.create(:wallet, who_id: @team2.id, who_class: 'Team')
+      @team1_wallet = FactoryBot.create(:wallet, :with_who, param_id: @team1.id, param_class: 'Team')
+      @team2_wallet = FactoryBot.create(:wallet, :with_who, param_id: @team2.id, param_class: 'Team')
 
       @stock1 = FactoryBot.create(:stock)
       @stock2 = FactoryBot.create(:stock)
-      @stock1_wallet = FactoryBot.create(:wallet, who_id: @stock1.id, who_class: 'Stock')
-      @stock2_wallet = FactoryBot.create(:wallet, who_id: @stock2.id, who_class: 'Stock')
+      @stock1_wallet = FactoryBot.create(:wallet, :with_who, param_id: @stock1.id, param_class: 'Stock')
+      @stock2_wallet = FactoryBot.create(:wallet, :with_who, param_id: @stock2.id, param_class: 'Stock')
     end
 
     it 'Should not transfer coin from user1 to user2' do

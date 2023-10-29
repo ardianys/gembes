@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :members, dependent: :destroy
-  has_many :wallets, -> { where('who_class = ?', 'User') }, class_name: 'Wallet', foreign_key: 'who_id', dependent: :nullify
+  has_many :wallets, -> { where('who_class = ?', 'User') }, as: :owner, class_name: 'Wallet', foreign_key: 'who_id', foreign_type: 'who_class', dependent: :nullify
 
   validates_presence_of :name
 
