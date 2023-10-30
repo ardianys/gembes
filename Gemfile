@@ -3,7 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.3"
 
-gem 'ardianys_scaffold', :path => '/Users/ardianys/rails/ardianys_scaffold_rails7'
 gem 'lsp', :path => 'lib/lsp'
 gem 'will_paginate'
 
@@ -71,6 +70,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # gem 'ardianys_scaffold', :path => '/Users/ardianys/rails/ardianys_scaffold_rails7'
 end
 
 group :test do

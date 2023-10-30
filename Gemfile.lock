@@ -1,9 +1,4 @@
 PATH
-  remote: /Users/ardianys/rails/ardianys_scaffold_rails7
-  specs:
-    ardianys_scaffold (0.1.0)
-
-PATH
   remote: lib/lsp
   specs:
     lsp (0.1.0)
@@ -262,7 +257,6 @@ PLATFORMS
   x86_64-darwin-20
 
 DEPENDENCIES
-  ardianys_scaffold!
   bootsnap
   capybara
   cssbundling-rails
