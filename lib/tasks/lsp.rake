@@ -4,7 +4,6 @@ require 'json'
 
 namespace 'lsp' do
   task price: :environment do
-    p ENV['RAPIDAPI_KEY']
     puts "Retrieve the price of Indices\n"
     indices = STDIN.gets.chomp
     response = Lsp::LatestStockPrice.price indices
