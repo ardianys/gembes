@@ -43,7 +43,6 @@ class UserApi::UsersController < UserApi::BaseController
         :email,
         :name,
         :password,
-
       )
     end
 end

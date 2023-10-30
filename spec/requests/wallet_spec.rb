@@ -61,6 +61,8 @@ RSpec.describe Wallet, type: :request do
       spost @user, url_for([:user_api, :wallets]), params
       expect(response.body).to include(code)
       expect(@team.wallets.size).to be >= 1
+      expect(json['who_class']).to be == 'Team'
+      expect(json['owner']['id']).to be == @team.id
     end
 
     it 'create new wallet for Stock' do
@@ -74,6 +76,8 @@ RSpec.describe Wallet, type: :request do
       spost @user, url_for([:user_api, :wallets]), params
       expect(response.body).to include(code)
       expect(@stock.wallets.size).to be >= 1
+      expect(json['who_class']).to be == 'Stock'
+      expect(json['owner']['id']).to be == @stock.id
     end
   end
 end

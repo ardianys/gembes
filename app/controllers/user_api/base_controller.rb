@@ -1,15 +1,5 @@
 class UserApi::BaseController < ActionController::Base
   before_action :require_login!
-  helper_method :person_signed_in?, :current_user
-
-  def append_info_to_payload(payload)
-    super
-    payload[:user_id] = current_user.try(:id) if defined? current_user
-  end
-
-  def user_signed_in?
-    current_person.present?
-  end
 
   def require_login!
     return true if authenticate_token
