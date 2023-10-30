@@ -29,6 +29,9 @@ RSpec.describe Wallet, type: :request do
       expect(response.body).to include(code)
       expect(@user.wallets.size).to be >= 1
 
+      sget @user, url_for([:user_api, @user])
+      expect(json['wallets'].count).to be == @user.wallets.size
+
       # check wallet entity
       sget @user, url_for([:user_api, @user.wallets.first])
       expect(response.body).to include(code)
